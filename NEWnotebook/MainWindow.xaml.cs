@@ -37,38 +37,38 @@ namespace BasicWpfNotepad
             // 顯示視窗
             Nullable<bool> result = dlg.ShowDialog();
 
-            // 當按下開啟之後的反應 
+            // 按下開啟之後的反應 
             if (result == true)
             {
-                // 取得檔案路徑 
+                // 取得檔案的路徑 
                 filePath = dlg.FileName;
 
-                // 讀取檔案
+                // 讀檔
                 TextArea.Text = System.IO.File.ReadAllText(filePath);
             }
         }
 
 
-        // 存檔檔案按鈕
+        // 存檔按鈕
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            // 產生開啟檔案視窗 OpenFileDialog 
+            // 產生儲存檔案視窗 SaveFileDialog 
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
 
             // 顯示視窗
             Nullable<bool> result = dlg.ShowDialog();
 
-            // 當按下開啟之後的反應 
+            // 按下開啟之後的反應 
             if (result == true)
             {
                 // 取得檔案路徑 
                 filePath = dlg.FileName;
 
-                // 儲存檔案
+                // 存檔
                 System.IO.File.WriteAllText(filePath, TextArea.Text);
             }
-
         }
+
         private void SaveAsBtn_Click(object sender, RoutedEventArgs e)
         {
             // 產生儲存檔案視窗 SaveFileDialog
@@ -89,53 +89,43 @@ namespace BasicWpfNotepad
             }
         }
 
-        // 調整字體大小
         private void Size1_Click(object sender, RoutedEventArgs e)
         {
-
+            // 改變字體大小為12
             TextArea.FontSize = 12;
         }
 
         private void Size2_Click(object sender, RoutedEventArgs e)
         {
-
+            // 改變字體大小為14
             TextArea.FontSize = 14;
         }
 
         private void Size3_Click(object sender, RoutedEventArgs e)
         {
-
+            // 改變字體大小為20
             TextArea.FontSize = 20;
         }
 
-
-        private void NewBtn_Click(object sender, RoutedEventArgs e)
+        private void BtnBlack_Checked(object sender, RoutedEventArgs e)
         {
-            // 重置
-            filePath = "";
-            TextArea.Text = "";
-        }
-        private void BtnW_Checked(object sender, RoutedEventArgs e)
-        {
-            // 日間模式
+            // 改變字體和底色
             TextArea.Background = Brushes.White;
             TextArea.Foreground = Brushes.Black;
         }
-        private void BtnG_Checked(object sender, RoutedEventArgs e)
+
+        private void BtnWhite_Checked(object sender, RoutedEventArgs e)
         {
-
-            // 夜間模式一
-            TextArea.Background = Brushes.DimGray;
-            TextArea.Foreground = Brushes.White;
-
-        }
-
-        private void BtnB_Checked(object sender, RoutedEventArgs e)
-        {
-            // 夜間模式二
+            // 改變字體和底色
             TextArea.Background = Brushes.Black;
             TextArea.Foreground = Brushes.White;
         }
 
+        private void NewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // 重置文件
+            filePath = "";
+            TextArea.Text = "";
+        }
     }
 }
